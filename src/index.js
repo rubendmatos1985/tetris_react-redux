@@ -22,7 +22,7 @@ import Audio from './audio'
 const AppContainer = styled.div`
   width: 85vw;
   height: 85vh;
-  padding-top: 50px;
+  padding-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;

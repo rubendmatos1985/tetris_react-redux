@@ -42,7 +42,7 @@ const Button = styled.button`
 
 const GameOver = props => {
   const startGame = ()=>(
-    props.dispatch({  type: 'START_GAME' })
+    props.dispatch({  type: 'RESTART_GAME' })
   );
   return (
     <Modal>

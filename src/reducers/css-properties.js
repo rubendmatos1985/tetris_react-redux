@@ -1,6 +1,6 @@
 const initState = {
   figuresInArena: {
-    doScoreAnimation: false,
+    scoreAnimationStarted: false,
     rowWhereMakeEffect: []
   }
 };
@@ -12,18 +12,25 @@ const cssProperties = (state = initState, action) => {
         ...state,
         figuresInArena: {
           ...state.figuresInArena,
-          doScoreAnimation: true,
           rowWhereMakeEffect: action.payload
         }
       };
     }
-    case "SCORE":{
+    case "SCORE_ANIMATION_STARTED":{
       return {
         ...state,
         figuresInArena: {
           ...state.figuresInArena,
-          doScoreAnimation: false,
-          rowWhereMakeEffect:[]
+          scoreAnimationStarted: true,
+        }
+      }
+    }
+    case "SCORE": {
+      return {
+        ...state,
+        figuresInArena: {
+          ...state.figuresInArena,
+          scoreAnimationStarted: false
         }
       }
     }

@@ -68,8 +68,13 @@ const staticData = {
       2: [[0, 7, 7], [0, 7, 0], [0, 7, 0]],
       3: [[7, 7, 7], [0, 0, 7], [0, 0, 0]]
     }
-  }
-};
+  },
+  canvas: {
+    width: 400,
+    height: 500
+  },
+  startGame: false
+}
 export default function(state = staticData, action) {
   switch (action.type) {
     case "COLLISION": {
@@ -151,7 +156,7 @@ export default function(state = staticData, action) {
         score: state.score + 25
       };
     }
-    case "START_GAME": {
+    case "RESTART_GAME": {
       return {
         ...state,
         arena: [
@@ -180,6 +185,9 @@ export default function(state = staticData, action) {
         record: state.score > state.record ? state.score : state.record,
         score: 0
       };
+    }
+    case 'START_GAME':{
+      return { ...state, startGame: true }
     }
     default:
       return state;

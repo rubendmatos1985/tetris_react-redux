@@ -9,7 +9,7 @@ const Container = styled.aside`
   font-size:  2.5vw;
   color: white;
   margin-left: 20px;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   display: flex;
   flex-direction: column;
   justify-content: start;

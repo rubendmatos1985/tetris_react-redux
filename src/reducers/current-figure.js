@@ -5,7 +5,9 @@ const initState = {
   figureInversion: 1,
   landed: false,
   figureType: "T",
-  figuresKeys: ["Z", "L", "I", "O", "S", "J", "T"]
+  figuresKeys: ["Z", "L", "I", "O", "S", "J", "T"],
+  rightCounter: 0,
+  leftCounter: 0
 };
 
 export default function(state = initState, action) {
@@ -16,9 +18,10 @@ export default function(state = initState, action) {
         yPosition: !state.landed ? state.yPosition + 25 : 0
       };
 
-    case "MOVE_ITEM_LEFT":
+    case "MOVE_ITEM_LEFT":{
       return { ...state, xPosition: state.xPosition - 1 };
-
+    }
+    
     case "MOVE_ITEM_RIGHT": {
       return { ...state, xPosition: state.xPosition + 1 };
     }
@@ -39,7 +42,7 @@ export default function(state = initState, action) {
       };
     }
     case "ADD_STEP": {
-      return { ...state, frame: state.frame + 1 };
+      return { ...state, frame: state.frame + 1, rightCounter: state.frame, leftCounter: state.frame };
     }
     case "INVERT_FIGURE": {
       return {
