@@ -57,10 +57,7 @@ const GameContainer = ({
         ref={scoreAudio}
         src="https://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20CHEESY%20LO-FI/38[kb]Charge-Fanfare.aif.mp3"
       />
-      {
-        !startGame && 
-        <StartGame/>
-      }
+      <StartGame/>
       <GameOver />
     </Container>
   );

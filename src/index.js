@@ -37,7 +37,7 @@ const App = () => (
     </Canvas>
     <Audio/>
     <ScoreAndRecord background='#422619'/>
-
+  
   </AppContainer>
 );
 

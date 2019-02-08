@@ -1,21 +1,45 @@
 import React, { useLayoutEffect } from "react";
 import Modal from "./modal";
-import { connect } from 'react-redux';
+import Container from "./container-for-modal";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
-const StartGame = props => {
-  const doStartGame = () => props.dispatch({ type: "START_GAME" });
+const Title = styled.div`
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
+  color: blue;
+  font-weight: bold;
+`;
+
+const Button = styled.button`
+ padding:5px;
+ width: 100px;
+ outline: none;
+ border: 1px solid #ff2865;
+ color: #ff2865;
+ font-size: 20px;
+ transition: all 1s;
+ background: transparent;
+  :hover{
+   cursor: pointer;
+   background: #ff75a1;
+   color: white;
+}
+   
+`;
+
+const StartGame = ({ dispatch, startGame }) => {
+  const doStartGame = () => dispatch({ type: "START_GAME" });
   return (
     <Modal>
-      <div>
-        Wellcome To Tetris
-        <button onClick={ doStartGame }>
-          Click To Start Game
-        </button>
-      </div>
+      <Container show={!startGame}>
+        <Title>Welcome To Tetris</Title>
+        <Button onClick={doStartGame}>Start</Button>
+      </Container>
     </Modal>
   );
 };
 
-const mapState = ({ staticData })=>({startGame: staticData.startGame})
+const mapState = ({ staticData }) => ({ startGame: staticData.startGame });
 
-export default connect(mapState)(StartGame)
+export default connect(mapState)(StartGame);
