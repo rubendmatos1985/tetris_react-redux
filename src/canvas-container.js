@@ -1,8 +1,7 @@
-import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
+import React, {  useEffect, useRef } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import GameOver from "./game-over";
-import StartGame from "./start-game";
+import GameData from './game-data';
 
 const SVG = styled.svg`
   width: ${ props => props.width };
@@ -11,17 +10,12 @@ const SVG = styled.svg`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-const FigureCover = styled.div`
-  position: fixed;
-  top: 2vh;
-  width: 400px;
-  height: 129px;
-  background: ${props => props.background};
-  box-shadow: 0px 2px 10px ${props => props.background};
 `;
 
 const GameContainer = ({
@@ -34,6 +28,7 @@ const GameContainer = ({
   currentFigureColor,
   width,
   height,
+  record,
   startGame
 }) => {
   const landedAudio = useRef();
@@ -44,11 +39,18 @@ const GameContainer = ({
   useConditionToMakeSound(score, scoreAudio);
   return (
     <Container>
-      <FigureCover background={ currentFigureColor } />
+      <GameData 
+        background={ currentFigureColor } 
+        record={ record }
+        score = { score } 
+        />
       <SVG
       width={ width }
       height={ height }
-      >{children}</SVG>
+      >
+      {children}
+      
+      </SVG>
       <audio
         ref={landedAudio}
         src="https://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/bleeps%20blips%20blonks%20blarts%20and%20zaps/49[kb]smatter4-zap.aif.mp3"
@@ -57,8 +59,6 @@ const GameContainer = ({
         ref={scoreAudio}
         src="https://sampleswap.org/samples-ghost/SFX%20and%20UNUSUAL%20SOUNDS/SOUND%20FX%20CHEESY%20LO-FI/38[kb]Charge-Fanfare.aif.mp3"
       />
-      <StartGame/>
-      <GameOver />
     </Container>
   );
 };
@@ -108,6 +108,7 @@ const mapState = state => ({
   gameOver: state.staticData.gameOver,
   landed: state.currentFigure.landed,
   score: state.staticData.score,
+  record: state.staticData.record,
   currentFigureColor: state.staticData.colors[state.currentFigure.figureType].color,
   scoreAnimationStarted: state.cssProperties.figuresInArena.scoreAnimationStarted,
   width: state.staticData.canvas.width,

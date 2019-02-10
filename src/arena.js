@@ -26,7 +26,7 @@ const Rect = styled.rect.attrs(props => ({
   transition: all 0.3s 0.3s;
 `;
 
-const Arena = ({ colors, arena, score }) => {
+const Arena = ({ colors, arena }) => {
   return (
     <g>
       {arena.map((subArr, idxY) =>

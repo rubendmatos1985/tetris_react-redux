@@ -6,9 +6,10 @@ import store from "./store";
 import CurrentFigure from "./currentFigure";
 import Canvas from "./canvas-container";
 import styled from "styled-components";
-import ScoreAndRecord from "./aside";
-import Audio from './audio'
-
+import Audio from './audio';
+import StartGame from './start-game';
+import GameOver from './game-over';
+import './style.css'
 /* if ('serviceWorker' in navigator) {
    window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js').then(registration => {
@@ -19,26 +20,33 @@ import Audio from './audio'
     });
   } */
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 85vh;
-  padding-top: 15px;
+const GameContainer = styled.div`
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #3d3c3c;
 `;
-
+const Container = styled.section`
+ 
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+`;
 const App = () => (
-  <AppContainer>
+  <Container>
+  <GameContainer>
     <Canvas>
       <Arena />
       <CurrentFigure />
     </Canvas>
     <Audio/>
-    <ScoreAndRecord background='#422619'/>
-  
-  </AppContainer>
+   <StartGame/>
+   <GameOver/>
+  </GameContainer>
+  </Container>
 );
 
 render(
