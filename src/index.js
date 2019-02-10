@@ -20,13 +20,13 @@ import Audio from './audio'
   } */
 
 const AppContainer = styled.div`
-  width: 85vw;
+  width: 100%;
   height: 85vh;
   padding-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: black;
+  background: #3d3c3c;
 `;
 
 const App = () => (

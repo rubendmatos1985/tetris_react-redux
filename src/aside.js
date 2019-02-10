@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import GameData from './game-data';
 const Container = styled.aside`
-  width: 20vw;
+  width: 20%;
   height: 100%;
   background: ${ props => props.background };
   font-size:  2.5vw;
